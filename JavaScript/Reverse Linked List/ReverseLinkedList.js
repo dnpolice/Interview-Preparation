@@ -1,8 +1,10 @@
 function reverseLinkedList(head) {
-	if (head == null) return null;
-	if (head.next == null) return head;
-	const newHead = reverseLinkedList(head.next);
-	head.next.next = head;
-	head.next = null;
-	return newHead;
+	let nodeLead = head, nodeFollow = null;
+	while (nodeLead != null){
+		let temp = nodeLead.next;
+		nodeLead.next = nodeFollow;
+		nodeFollow = nodeLead;
+		nodeLead = temp;
+	}
+	return nodeFollow;
 }
